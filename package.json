@@ -17,7 +17,7 @@
   "scripts": {
     "build": "rm -rf libs/** && node_modules/.bin/babel src/ -d libs -s",
     "start": "node_modules/.bin/nodemon src/index.js --watch src --exec 'node_modules/.bin/eslint src && node_modules/.bin/babel-node'",
-    "test": "node_modules/.bin/mocha --compilers js:babel-core/register"
+    "test": "node_modules/.bin/mocha --compilers js:babel-core/register --recursive"
   },
   "files": [
     "index.js",
@@ -30,6 +30,8 @@
     ""
   ],
   "dependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
     "lodash": "^4.17.2",
     "meow": "^3.7.0"
   },
