@@ -1,84 +1,62 @@
 {
-  "version": "0.0.0",
   "name": "hollys",
-  "description": "General javascript code snippets that will fits MOST of your work!",
-  "author": {
-    "name": "Nodeframe-Solution",
-    "email": "support@nf-solution.com"
-  },
+  "version": "0.0.0",
+  "description": "My fabulous module",
+  "license": "MIT",
   "repository": "puttpotsawee/hollys",
-  "license": "Artistic-2.0",
-  "directories": {
-    "test": "test"
+  "author": {
+    "name": "Putt",
+    "email": "junrai82@gmail.com",
+    "url": "nf-solution.com"
   },
-  "keywords": [
-    "data",
-    "hollys",
-    "javascript",
-    "json",
-    "node.js"
-  ],
+  "main": "libs/index.js",
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=4"
+  },
   "scripts": {
-    "start": "babel-node index.js",
-    "test-browser": "browserify -t babelify test/test.js | tap-closer | smokestack -b chrome | tap-spec",
-    "test-server": "tape -r babel/register test/*.js | tap-spec",
-    "test": "npm run test-server && npm run test-browser",
-    "tdd-server": "nodemon -q -x npm -i node_modules/ -e js,js -- run -s test-server",
-    "tdd-browser": "hihat test/*.js --transform babelify --debug -p tap-dev-tool",
-    "test": "tape -r babel/register test/test.js | tap-spec",
-    "tdd": "nodemon -q -x npm -i node_modules/ -e js,js -- run -s test",
-    "watch": "babel src --watch --out-dir dist",
-    "note1": "we can't have nice things. prepublish also runs on npm install https://github.com/npm/npm/issues/6394 in-publish hacks around this",
-    "prepublish": "in-publish && npm prune && npm run -s gitPush || in-install",
-    "note2": "eslint will always pull from the global eslintrc file, disable that so that we're only looking at the local",
-    "note3": "travis doesn't play nicely with !#/bin/bash in the script file, so we have to explicitly set bash",
-    "lint": "f () { /bin/bash -c \"source ./scripts.sh && lint $@\"; }; f",
-    "note4": "the diff-filter option below gets all files but deleted ones",
-    "lint-staged": "git diff --diff-filter=ACMRTUXB --cached --name-only | grep '.*\\.js$\\|\\.js$' | grep -v 'node_modules' | xargs npm run -s lint",
-    "requireGitClean": "/bin/bash -c 'source ./scripts.sh && git_require_clean_work_tree'",
-    "nsp": "echo 'checking for insecure node modules'; nsp check",
-    "note5": "--no-verify skips the commit hook",
-    "dmn": "dmn gen -f . && if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != '' ]]; then git add .npmignore && git commit --no-verify -m'update npmignore'; fi",
-    "doctoc": "doctoc README.md && if [ -f .github/CONTRIBUTING.md ]; then doctoc .github/CONTRIBUTING.md; fi && if [[ $(git diff --shortstat -- README.md 2> /dev/null | tail -n1) != '' || $(git diff --shortstat -- .github/CONTRIBUTING.md 2> /dev/null | tail -n1) != '' ]]; then git add README.md .github/CONTRIBUTING.md && git commit --no-verify -m'table of contents update'; fi",
-    "gitPull": "git pull --rebase origin master",
-    "gitPush": "git push --follow-tags --no-verify && git push --tags --no-verify",
-    "build": "NODE_ENV=production && babel src --out-dir=dist",
-    "install-deps": "/bin/bash -c 'source ./scripts.sh && install_if_needed && npm prune'",
-    "release": "f () { source ./scripts.sh && npm run requireGitClean && npm run gitPull && npm run dmn && npm run doctoc && npm run build && npm run lint && npm test && npm_release public $@; }; f"
+    "build": "rm -rf libs/** && node_modules/.bin/babel src/ -d libs -s",
+    "start": "node_modules/.bin/nodemon src/index.js --watch src --exec 'node_modules/.bin/eslint src && node_modules/.bin/babel-node'",
+    "test": "node_modules/.bin/mocha --compilers js:babel-core/register"
   },
-  "config": {
-    "notes": "important to correct the path of npm so that the git hook doesn't error",
-    "ghooks": {
-      "pre-commit": "PATH=$PATH:/usr/local/bin:/usr/local/sbin && npm run lint-staged",
-      "pre-push": "PATH=$PATH:/usr/local/bin:/usr/local/sbin && npm run dmn && npm run doctoc && npm run lint && npm test",
-      "post-merge": "PATH=$PATH:/usr/local/bin:/usr/local/sbin && npm run -s install-deps",
-      "post-rewrite": "PATH=$PATH:/usr/local/bin:/usr/local/sbin && npm run -s install-deps"
-    }
+  "files": [
+    "index.js",
+    "cli.js",
+    "libs"
+  ],
+  "keywords": [
+    "cli-app",
+    "cli",
+    ""
+  ],
+  "dependencies": {
+    "lodash": "^4.17.2",
+    "meow": "^3.7.0"
   },
-  "main": "dist/index.js",
-  "browser": "dist/index.js",
   "devDependencies": {
-    "babel": "^5.8.35",
-    "babel-core": "^5.8.35",
-    "babel-eslint": "^5.0.0",
-    "babel-plugin-closure-elimination": "^0.0.2",
-    "babel-runtime": "^5.8.20",
-    "babelify": "^6.0.2",
-    "browserify": "^13.0.0",
-    "dmn": "^1.0.5",
-    "doctoc": "^1.0.0",
-    "eslint": "^2.2.0",
-    "eslint-plugin-react": "^2.6.0",
-    "ghooks": "^1.0.3",
-    "hihat": "^1.2.1",
-    "in-publish": "^2.0.0",
-    "nodemon": "^1.2.1",
-    "nsp": "^2.2.0",
-    "sinon": "^1.12.2",
-    "smokestack": "^3.2.0",
-    "tap-dev-tool": "^1.3.0",
-    "tap-closer": "^1.0.0",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.0.0"
+    "ava": "^0.15.2",
+    "nyc": "^7.1.0",
+    "xo": "^0.16.0",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.18.0",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-module-resolver": "^2.2.0",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-plugin-transform-regenerator": "^6.14.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-latest": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "eslint": "^3.4.0",
+    "eslint-plugin-async-await": "0.0.0",
+    "expect": "^1.20.2",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.10.2",
+    "sinon": "^1.17.5"
+  },
+  "xo": {
+    "esnext": true
   }
 }

@@ -1,9 +1,21 @@
 {
-  "plugins": [
-    "closure-elimination"
-  ],
-  "optional": [
-    "runtime"
-  ],
-  "stage": 0
+  "presets":["es2015","latest"],
+  "plugins":[
+	["module-resolver", {
+	  "root": ["./src"]
+	}],
+	"transform-decorators-legacy",
+	"transform-class-properties",
+	"transform-object-rest-spread",
+	["transform-regenerator",{"async":false}],
+	["babel-plugin-transform-runtime" ,{
+	  "helpers": false,
+	  "polyfill": false,
+	  "regenerator": true,
+	  "moduleName": "babel-runtime"
+	}]
+//	["babel-plugin-transform-builtin-extend", {
+//	  "globals": ["Error"]
+//	}]
+  ]
 }

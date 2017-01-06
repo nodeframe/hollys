@@ -1,7 +1,4 @@
-export {testFunction} from './testfile'
+export * as object from './object'
 
-export const get = function get (str) {
-  console.log(str || 'Rainbow')
-}
-
+export default { ...object }
 

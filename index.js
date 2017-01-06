@@ -1,7 +1,10 @@
-export {testFunction} from './src/testfile'
+'use strict';
+module.exports = (input, opts) => {
+	if (typeof input !== 'string') {
+		throw new TypeError(`Expected a string, got ${typeof input}`);
+	}
 
-export const get = function get (str) {
-  console.log(str || 'Rainbow')
-}
+	opts = opts || {};
 
-
+	return input + ' & ' + (opts.postfix || 'rainbows');
+};

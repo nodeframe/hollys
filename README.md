@@ -1,70 +1,68 @@
-# hollys [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-url]][daviddm-image] [![Build Status][travis-image]][travis-url]
+# hollys [![Build Status](https://travis-ci.org/puttpotsawee/hollys.svg?branch=master)](https://travis-ci.org/puttpotsawee/hollys)
 
-General javascript code snippets that will fits MOST of your work!
+> My fabulous module
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
-
-- [Install](#install)
-- [Usage](#usage)
-- [Methods](#methods)
-- [Events](#events)
-- [Tests](#tests)
-- [Developing](#developing)
-  - [Requirements](#requirements)
-- [License](#license)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Install
 
-```sh
-npm i -S hollys
+```
+$ npm install --save hollys
 ```
 
 
 ## Usage
 
 ```js
-import hollys from 'hollys'
+const hollys = require('hollys');
 
-hollys('Rainbow')
+hollys('unicorns');
+//=> 'unicorns & rainbows'
 ```
 
-## Methods
-### get `(<String> string)`
-Returns the string passed to it.
 
-## Events
-### myEvent `(<String> myString)`
-Emitted when x happens. Passes `myString` which is a y.
+## API
 
-## Tests
-Tests are in [tape](https://github.com/substack/tape).
+### hollys(input, [options])
 
-* `npm test` will run both server and browser tests
-* `npm run test-browser` and `npm run test-server` run their respective tests
-* `npm run tdd-server` will run the server tests on every file change.
-* `npm run tdd-browser` will run the browser tests on every file change.
+#### input
 
-## Developing
-To publish, run `npm run release -- [{patch,minor,major}]`
+Type: `string`
 
-_NOTE: you might need to `sudo ln -s /usr/local/bin/node /usr/bin/node` to ensure node is in your path for the git hooks to work_
+Lorem ipsum.
 
-### Requirements
-* **npm > 2.0.0** So that passing args to a npm script will work. `npm i -g npm`
-* **git > 1.8.3** So that `git push --follow-tags` will work. `brew install git`
+#### options
+
+##### foo
+
+Type: `boolean`<br>
+Default: `false`
+
+Lorem ipsum.
+
+
+## CLI
+
+```
+$ npm install --global hollys
+```
+
+```
+$ hollys --help
+
+  Usage
+    hollys [input]
+
+  Options
+    --foo  Lorem ipsum [Default: false]
+
+  Examples
+    $ hollys
+    unicorns & rainbows
+    $ hollys ponies
+    ponies & rainbows
+```
+
 
 ## License
 
-Artistic 2.0 © Nodeframe-Solution and contributors. A copy of the license can be found in the file `LICENSE`.
-
-
-[npm-url]: https://npmjs.org/package/hollys
-[npm-image]: https://badge.fury.io/js/hollys.svg
-[travis-url]: https://travis-ci.org/puttpotsawee/hollys
-[travis-image]: https://travis-ci.org/puttpotsawee/hollys.svg?branch=master
-[daviddm-url]: https://david-dm.org/puttpotsawee/hollys.svg?theme=shields.io
-[daviddm-image]: https://david-dm.org/puttpotsawee/hollys
+MIT © [Putt](http://nf-solution.com)
