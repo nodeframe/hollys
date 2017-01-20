@@ -1,6 +1,6 @@
 {
   "name": "hollys",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A highlevel functional lib of Javascript. Aim to help fullstack Javascript developer team manage functional code",
   "license": "MIT",
   "repository": "nodeframe/hollys",
