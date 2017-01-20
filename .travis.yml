@@ -1,4 +1,11 @@
 language: node_js
 node_js:
-  - '6'
-  - '5'
+- '6'
+- '5'
+deploy:
+  provider: npm
+  email: support@nf-solution.com
+  api_key:
+    secure: clAATCqubhZIxPEscPLe4r5z5Vw+59jmpxW0Gc9/d+IsfO9gPtdNc4/Reg7KE2vV3zX+YReDvLqAdwbbL61vcHIC8v781iG9S2EuEzDiHFpYIYtTGK3B6HTIquOYZdSxYllF/T4SQWEADrUymSf4YQyBzOuIAVp8G8PCuqqqOqLRuKoXCPvo28Rc9V7VSnwvwmZAeNORuPYmneVPMWsin1Rl9TDg1DNfCL2dEo5+tR+v5Rb1xSeC+55f5ew2ak3MDaQcWqM+Q3jDCeoZWyPIuDXxBYGrZ97Xz63uCiNpbDiJ9N8WUwxAJubnSdKP6Lfq0UEZEJCzCVqevaXQ6qxPfEpe4D7/CNGKQYbLOH6luvl5VdzSGJmBw5AVcBj6JSDVYM+Wasrf6UECb69oxJfiTStQtr1/TmhBQmuvWHyLz3ck+K4mxN3Tw3AHT9eGu9r+1GYrYq4tkJbksaZqjDUIHsX91du/lHUFyATaEuZQW8wLouFoz4vAR5zGlpmmC89JqaktMetLCJnlNMuAnBk1SqolnVRNLKl/kA9U3Bq2Tk1XrQ3gCjM+gIqfYinqnnF7leG2JWubZXnpqbTMGuW+iqUclFfugTXNgiHmXOviYRcmuPgw+53bYeK8zxgwKjEIb51VTeMQZ839T4qZOQNVMbCZIMjqvP1VS6F/u3h16+c=
+  on:
+    branch: master
