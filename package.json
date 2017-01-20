@@ -1,9 +1,9 @@
 {
   "name": "hollys",
-  "version": "0.0.0",
-  "description": "My fabulous module",
+  "version": "0.0.1",
+  "description": "A highlevel functional lib of Javascript. Aim to help fullstack Javascript developer team manage functional code",
   "license": "MIT",
-  "repository": "puttpotsawee/hollys",
+  "repository": "nodeframe/hollys",
   "author": {
     "name": "Putt",
     "email": "junrai82@gmail.com",
